@@ -88,7 +88,7 @@ public class OAuth2Api {
 	}
 
 
-	public static void setUser(HttpSession session, TokenResponse tokenResponse) throws IOException {
+	public static String setUser(HttpSession session, TokenResponse tokenResponse) throws IOException {
 		// Decode JWT
 		String jwt = (String) tokenResponse.get("id_token");
 		String jwtDecoded = OAuth2Api.decodeJwt(jwt);
@@ -101,5 +101,6 @@ public class OAuth2Api {
 		user.setAccessToken(accessToken);
 		// Set user in session
 		session.setAttribute(oauth2User, user);
+		return user.getEmail();
 	}
 }
