@@ -72,7 +72,7 @@ public class OAuth2Api {
 	}
 
 	public static OAuth2User getUser(HttpServletRequest req) {
-		return (OAuth2User) req.getSession().getAttribute(oauth2User);
+		return JsonUtil.deserialize(OAuth2User.class, (String) req.getSession().getAttribute(oauth2User));
 	}
 
 	public static void clearUser(HttpSession session) {
@@ -84,7 +84,7 @@ public class OAuth2Api {
 		OAuth2User user = new OAuth2User();
 		user.setMessage(error);
 		// Set user in session
-		session.setAttribute(oauth2User, user);
+		session.setAttribute(oauth2User, JsonUtil.serialize(user));
 	}
 
 
@@ -100,7 +100,7 @@ public class OAuth2Api {
 		user.setEmail(email);
 		user.setAccessToken(accessToken);
 		// Set user in session
-		session.setAttribute(oauth2User, user);
+		session.setAttribute(oauth2User, JsonUtil.serialize(user));
 		return user.getEmail();
 	}
 }
