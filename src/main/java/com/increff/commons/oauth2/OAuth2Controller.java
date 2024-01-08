@@ -87,9 +87,9 @@ public class OAuth2Controller {
 		// Get access token and JWT
 		// Create the oAuth2User
 
-		OAuth2Api.setUser(session, response);
+		String email = OAuth2Api.setUser(session, response);
 		// Redirect
-		return new RedirectView(appRedirectUri, true);
+		return new RedirectView(appRedirectUri + "?email="+email, true);
 	}
 
 }

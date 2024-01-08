@@ -211,7 +211,7 @@
 
 	<scm>
 		<connection>scm:git:git://github.com/increff/commons-oauth2.git</connection>
-		<developerConnection>scm:git:git@github.com:increff/commons-oauth2.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/increff/commons-oauth2.git</developerConnection>
 		<url>https://github.com/increff/commons-oauth2</url>
 		<tag>HEAD</tag>
 	</scm>
